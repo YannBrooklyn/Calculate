@@ -88,8 +88,10 @@ divscreen.style.color = "white"
 divscreen.style.width = "50vh"
 divscreen.style.height = "10vh"
 divscreen.style.backgroundColor = "rgb(0, 0, 25)"
+divscreen.style.borderStyle = "solid"
+divscreen.style.borderWidth = "1px"
 divscreen.style.borderColor = "yellow"
-divscreen.style.borderStyle = "4px"
+
 
 //////////////////////   CSS SIDE    /////////////////////////
 
@@ -119,6 +121,8 @@ divcalculator.style.flexWrap = "wrap";
 const divnumbers = document.querySelector("div div:nth-child(1)");
 // console.log(divnumbers);
 divnumbers.classList.add("numbers");
+divnumbers.style.width = "31vh"
+divnumbers.style.height = "40vh"
 
 
 
@@ -165,6 +169,25 @@ divcalculate.style.flexDirection ="column";
 
 /********************************************************/
 
+const divparametre = document.querySelector("main > div:nth-child(2) > div:nth-child(1) > div:nth-child(5)");
+// console.log(divparametre);
+divparametre.classList.add("parametre");
+divparametre.style.display = "flex";
+divparametre.style.flexDirection ="row";
+
+/********************************************************/
+
+const divhistorique = document.querySelector("main > div:nth-child(2) > div:nth-child(1) > div:nth-child(6)");
+// console.log(divhistorique);
+divhistorique.classList.add("historik");
+divhistorique.style.display = "flex";
+divhistorique.style.flexDirection ="row";
+divhistorique.style.backgroundColor = "darkblue"
+divhistorique.style.width = "30vh";
+divhistorique.style.height = "20vh";
+
+
+
 
 /****************************** THE BUTTON ********************/
 
@@ -187,12 +210,12 @@ button7.addEventListener("click", function fubu7(){
     if (h1result.innerHTML === "0"){
         h1result.innerHTML = "";
     }
-    if (resultjs3 > 0) {
+    if (resultjs3 >= 0) {
        
         h1result.innerHTML = "";
-        h1resulthidden = 0;
-        resultjs = 0;
-        resultjs3 = 0;
+        h1resulthidden.innerHTML = "";
+        resultjs = -1;
+        resultjs3 = -1;
     }
     if (resultjs >= 0 && resultjs2 === 0) {
         
@@ -759,8 +782,15 @@ resultat.addEventListener("click", function fuburesult(){
     resultjs2 = parseFloat(h1resulthidden2.innerHTML);
     
     if (h1result.innerHTML === resultjs + "+" + resultjs2) {
+    const newLi = document.createElement("h5")
+    newLi.innerHTML = h1result.innerHTML + "=";
     h1result.innerHTML = resultjs2 + resultjs;
-    
+    newLi.innerHTML = newLi.innerHTML + h1result.innerHTML + "| ";
+    document.querySelector("main > div:nth-child(2) > div:nth-child(1) > div:nth-child(6)").appendChild(newLi)
+    newLi.style.color = "white"
+    newLi.style.fontSize = "2vh"
+    newLi.style.listStyleType = "none"
+     
     }
 
     else if (h1result.innerHTML === resultjs + "-" + resultjs2 ) {
@@ -778,13 +808,58 @@ resultat.addEventListener("click", function fuburesult(){
     else if (h1result.innerHTML === resultjs + "%" + resultjs2 ) {
         h1result.innerHTML = resultjs % resultjs2;
     }
-
     resultjs = parseFloat(h1result.innerHTML);
-    h1resulthidden = parseFloat(h1result.innerHTML);
-    resultjs2 = 0;
+    h1resulthidden.innerHTML = parseFloat(h1result.innerHTML);
+    resultjs2 = -1;
     h1resulthidden2.innerHTML = "";
     resultjs3 = parseFloat(h1result.innerHTML);
+    
+    
 })
 
 
+const buttonclear = document.querySelector("main > div:nth-child(2) > div:nth-child(1) > div:nth-child(5) > button:nth-child(1)");
+// console.log(buttonclear);
+buttonclear.classList.add("buttonc");
+buttonclear.innerHTML = "C";
+buttonclear.style.color = "white";
+buttonclear.style.backgroundColor = "rgb(250, 217, 0)";
+buttonclear.style.border = "none"
+buttonclear.style.borderRadius = "5vh 5vh 5vh 5vh"
+buttonclear.style.width = "10vh"
+buttonclear.style.height= "10vh"
+buttonclear.style.fontSize = "6vh"
+buttonclear.addEventListener("click" , function fubucl(){
+    resultjs = -1;
+    resultjs2 = -1;
+    resultjs3= -1;
+    h1result.innerHTML = "0";
+    h1resulthidden.innerHTML = "";
+    h1resulthidden2.innerHTML = "";
+})
 
+const buttonsettings = document.querySelector("main > div:nth-child(2) > div:nth-child(1) > div:nth-child(5) > button:nth-child(2)");
+// console.log(buttonsettings);
+buttonsettings.classList.add("buttonseti");
+buttonsettings.innerHTML = "S";
+buttonsettings.style.color = "white";
+buttonsettings.style.backgroundColor = "rgb(250, 217, 0)";
+buttonsettings.style.border = "none"
+buttonsettings.style.borderRadius = "5vh 5vh 5vh 5vh"
+buttonsettings.style.width = "10vh"
+buttonsettings.style.height= "10vh"
+buttonsettings.style.fontSize = "6vh"
+
+const buttonhistory = document.querySelector("main > div:nth-child(2) > div:nth-child(1) > div:nth-child(5) > button:nth-child(3)");
+// console.log(buttonhistory);
+buttonhistory.classList.add("buttonhisto");
+buttonhistory.innerHTML = "H";
+buttonhistory.style.color = "white";
+buttonhistory.style.backgroundColor = "rgb(250, 217, 0)";
+buttonhistory.style.border = "none"
+buttonhistory.style.borderRadius = "5vh 5vh 5vh 5vh"
+buttonhistory.style.width = "10vh"
+buttonhistory.style.height= "10vh"
+buttonhistory.style.fontSize = "6vh"
+
+ 
